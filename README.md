@@ -30,11 +30,14 @@ This is also a first GitHub learning project. The repository is intentionally sm
 Run these as an operator or in a cheats-enabled single-player world:
 
 ```mcfunction
+/function calamity:admin/ping
 /function calamity:admin/start
 /function calamity:admin/stop
 /function calamity:admin/force_event
 /function calamity:admin/uninstall
 ```
+
+Use `ping` first when testing. If `ping` works, Minecraft can see this datapack's functions.
 
 ## GitHub Learning Checklist
 
@@ -73,3 +76,33 @@ cd F:\.github\random-calamity-datapack\RandomCalamity
 Compress-Archive -Path * -DestinationPath ..\dist\RandomCalamity-1.0.0.zip -Force
 ```
 
+## Troubleshooting Unknown Command
+
+If Minecraft says `Unknown command`, first run:
+
+```mcfunction
+/help function
+```
+
+If `/help function` is unknown, commands/cheats/operator permissions are not active in that world or server.
+
+If `/help function` works, run:
+
+```mcfunction
+/function calamity:admin/ping
+```
+
+If `ping` is unknown, the datapack is not loaded. Check that the installed folder or zip has `pack.mcmeta` directly at its root.
+
+Correct:
+
+```text
+datapacks/RandomCalamity/pack.mcmeta
+datapacks/RandomCalamity/data/
+```
+
+Incorrect:
+
+```text
+datapacks/random-calamity-datapack/RandomCalamity/pack.mcmeta
+```
