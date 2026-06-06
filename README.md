@@ -94,9 +94,11 @@ git push -u origin main
 When publishing a release zip, zip the contents of `RandomCalamity` so `pack.mcmeta` is at the zip root. Do not zip the outer repository folder.
 
 ```powershell
-cd F:\.github\random-calamity-datapack\RandomCalamity
-Compress-Archive -Path * -DestinationPath ..\dist\RandomCalamity-1.0.0.zip -Force
+cd F:\.github\random-calamity-datapack
+.\tools\build-release.ps1 -Version 1.0.4
 ```
+
+Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects zip entries like `data/minecraft/...`, not Windows-style `data\minecraft\...`.
 
 ## Troubleshooting Unknown Command
 
