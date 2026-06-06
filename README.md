@@ -2,8 +2,6 @@
 
 Random Calamity is a Minecraft Java 1.21.5 datapack for a simple survival challenge. When the challenge is enabled, a timer triggers one random event every 60 seconds.
 
-This is also a first GitHub learning project. The repository is intentionally small, readable, and split into clear milestones so you can learn how commits describe progress.
-
 ## What It Does
 
 - Starts and stops a timed calamity challenge.
@@ -85,41 +83,13 @@ The longer admin names also work:
 
 Use `/trigger ping` first when testing. If it works, the datapack command triggers are ready.
 
-## GitHub Learning Checklist
-
-After Git is installed, these commands create a local repository and make the first learning commits:
-
-```powershell
-cd F:\.github\random-calamity-datapack
-git init
-git status
-git add README.md .gitignore RandomCalamity\pack.mcmeta
-git commit -m "Create datapack project scaffold"
-git add RandomCalamity\data\minecraft RandomCalamity\data\calamity\function\load.mcfunction RandomCalamity\data\calamity\function\tick.mcfunction
-git commit -m "Wire load and tick functions"
-git add RandomCalamity\data\calamity\function\admin
-git commit -m "Add admin control functions"
-git add RandomCalamity\data\calamity\function\events RandomCalamity\data\calamity\function\internal
-git commit -m "Add random calamity events"
-git add README.md
-git commit -m "Document install and play steps"
-```
-
-To publish on GitHub, create a public empty repository named `random-calamity-datapack`, then run:
-
-```powershell
-git branch -M main
-git remote add origin https://github.com/Fredfive007/random-calamity-datapack.git
-git push -u origin main
-```
-
 ## Release Zip
 
 When publishing a release zip, zip the contents of `RandomCalamity` so `pack.mcmeta` is at the zip root. Do not zip the outer repository folder.
 
 ```powershell
 cd F:\.github\random-calamity-datapack
-.\tools\build-release.ps1 -Version 1.0.4
+.\tools\build-release.ps1 -Version 1.1.1
 ```
 
 Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects zip entries like `data/minecraft/...`, not Windows-style `data\minecraft\...`.
@@ -129,7 +99,7 @@ Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects z
 If Minecraft says `Unknown command`, first run:
 
 ```mcfunction
-/help function
+/help trigger
 ```
 
 If `/help trigger` is unknown, commands/cheats/operator permissions are not active in that world or server.
