@@ -27,17 +27,25 @@ This is also a first GitHub learning project. The repository is intentionally sm
 
 ## Commands
 
-Use these player commands after `/reload`:
+Use this single player command after `/reload`:
 
 ```mcfunction
-/trigger rc_ping
-/trigger rc_start
-/trigger rc_stop
-/trigger rc_force
-/trigger rc_uninstall
+/trigger rc set 1
+/trigger rc set 2
+/trigger rc set 3
+/trigger rc set 4
+/trigger rc set 9
 ```
 
-The `/trigger` commands are the recommended way to use the datapack.
+The numbers mean:
+
+- `1`: ping test
+- `2`: start
+- `3`: stop
+- `4`: force one random event
+- `9`: uninstall scoreboards
+
+The single `/trigger rc set ...` command is the recommended way to use the datapack.
 
 Operator function commands are also available:
 
@@ -59,7 +67,7 @@ The longer admin names also work:
 /function calamity:admin/uninstall
 ```
 
-Use `rc_ping` first when testing. If it works, the datapack command triggers are ready.
+Use `/trigger rc set 1` first when testing. If it works, the datapack command trigger is ready.
 
 ## GitHub Learning Checklist
 
@@ -113,10 +121,10 @@ If `/help trigger` is unknown, commands/cheats/operator permissions are not acti
 If `/help trigger` works, run:
 
 ```mcfunction
-/trigger rc_ping
+/trigger rc set 1
 ```
 
-If `rc_ping` is unknown or disabled, run `/reload` once. If it still fails, the datapack is not loaded correctly. Check that the installed folder or zip has `pack.mcmeta` directly at its root.
+If `rc` is unknown or disabled, run `/reload` once. If it still fails, the datapack is not loaded correctly. Check that the installed folder or zip has `pack.mcmeta` directly at its root.
 
 Correct:
 

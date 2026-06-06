@@ -3,6 +3,7 @@ scoreboard objectives remove rc.enabled
 scoreboard objectives remove rc.random
 scoreboard objectives remove rc.event
 scoreboard objectives remove rc.cooldown
+scoreboard objectives remove rc
 scoreboard objectives remove rc_ping
 scoreboard objectives remove rc_start
 scoreboard objectives remove rc_stop
