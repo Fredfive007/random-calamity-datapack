@@ -6,7 +6,7 @@ Random Event is a Minecraft Java 1.21.5 datapack for a survival challenge. When 
 
 - Starts and stops a timed random event challenge.
 - Runs one event every 15-60 seconds.
-- Includes twenty-three events: 13 negative events and 10 positive events.
+- Includes twenty-nine events: 18 negative events and 11 positive events.
 - Shows a sidebar with challenge state, current event ID, and seconds until the next event.
 - Avoids permanent terrain destruction.
 
@@ -58,6 +58,11 @@ Negative events:
 - fire panic
 - rotten snack
 - hostile bell
+- arrow storm
+- ender panic
+- silverfish crack
+- brute raid
+- sky return
 
 Positive events:
 
@@ -71,6 +76,7 @@ Positive events:
 - enchanted manual
 - golden apple gift
 - diamond spark
+- ender pearls
 
 Mob Ambush has four variants:
 
@@ -126,8 +132,9 @@ Important files:
 - `data/random_event/function/tick.mcfunction`: handles trigger input, counts down the timer, and fires events.
 - `data/random_event/function/internal/set_random_cooldown.mcfunction`: rolls the next interval from 15-60 seconds.
 - `data/random_event/function/internal/spread_mobs.mcfunction`: spreads ambush mobs around players after summoning.
+- `data/random_event/function/internal/return_from_sky.mcfunction`: returns players from the sky return event after 15 seconds.
 - `data/random_event/function/internal/update_sidebar.mcfunction`: updates stable sidebar row suffixes while keeping row scores fixed.
-- `data/random_event/function/internal/trigger_event.mcfunction`: rolls `1..23` and dispatches to one event file.
+- `data/random_event/function/internal/trigger_event.mcfunction`: rolls `1..29` and dispatches to one event file.
 - `data/random_event/function/events/`: one `.mcfunction` file per random event.
 - `tools/build-release.ps1`: builds a Minecraft-safe release zip with `/` path separators.
 
@@ -144,7 +151,7 @@ When publishing a release zip, zip the contents of `RandomEvent` so `pack.mcmeta
 
 ```powershell
 cd F:\.github\random-calamity-datapack
-.\tools\build-release.ps1 -Version 1.2.1
+.\tools\build-release.ps1 -Version 1.3.0
 ```
 
 Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects zip entries like `data/minecraft/...`, not Windows-style `data\minecraft\...`.

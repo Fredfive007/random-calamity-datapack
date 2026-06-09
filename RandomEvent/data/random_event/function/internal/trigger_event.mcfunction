@@ -1,6 +1,6 @@
 scoreboard players set #timer rc.timer 0
 function random_event:internal/set_random_cooldown
-execute store result score #event rc.event run random value 1..23
+execute store result score #event rc.event run random value 1..29
 execute if score #event rc.event matches 1 run function random_event:events/blindness_fog
 execute if score #event rc.event matches 2 run function random_event:events/mob_ambush
 execute if score #event rc.event matches 3 run function random_event:events/gravity_slip
@@ -24,4 +24,10 @@ execute if score #event rc.event matches 20 run function random_event:events/sec
 execute if score #event rc.event matches 21 run function random_event:events/random_enchantment
 execute if score #event rc.event matches 22 run function random_event:events/golden_apple_gift
 execute if score #event rc.event matches 23 run function random_event:events/diamond_spark
+execute if score #event rc.event matches 24 run function random_event:events/arrow_storm
+execute if score #event rc.event matches 25 run function random_event:events/ender_panic
+execute if score #event rc.event matches 26 run function random_event:events/silverfish_crack
+execute if score #event rc.event matches 27 run function random_event:events/piglin_brute_raid
+execute if score #event rc.event matches 28 run function random_event:events/sky_return
+execute if score #event rc.event matches 29 run function random_event:events/ender_pearl_gift
 function random_event:internal/update_sidebar

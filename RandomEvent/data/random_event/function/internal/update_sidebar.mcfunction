@@ -28,6 +28,12 @@ execute if score #event rc.event matches 20 run team modify rc.line.event suffix
 execute if score #event rc.event matches 21 run team modify rc.line.event suffix {"text":" Random Enchantment","color":"light_purple"}
 execute if score #event rc.event matches 22 run team modify rc.line.event suffix {"text":" Golden Apple Gift","color":"gold"}
 execute if score #event rc.event matches 23 run team modify rc.line.event suffix {"text":" Diamond Spark","color":"aqua"}
+execute if score #event rc.event matches 24 run team modify rc.line.event suffix {"text":" Arrow Storm","color":"gray"}
+execute if score #event rc.event matches 25 run team modify rc.line.event suffix {"text":" Ender Panic","color":"dark_purple"}
+execute if score #event rc.event matches 26 run team modify rc.line.event suffix {"text":" Silverfish Crack","color":"gray"}
+execute if score #event rc.event matches 27 run team modify rc.line.event suffix {"text":" Brute Raid","color":"dark_red"}
+execute if score #event rc.event matches 28 run team modify rc.line.event suffix {"text":" Sky Return","color":"aqua"}
+execute if score #event rc.event matches 29 run team modify rc.line.event suffix {"text":" Ender Pearls","color":"light_purple"}
 execute if score #next rc.value matches 0 run team modify rc.line.next suffix {"text":" 0s","color":"yellow"}
 execute if score #next rc.value matches 1 run team modify rc.line.next suffix {"text":" 1s","color":"yellow"}
 execute if score #next rc.value matches 2 run team modify rc.line.next suffix {"text":" 2s","color":"yellow"}

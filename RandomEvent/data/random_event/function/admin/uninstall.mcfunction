@@ -13,4 +13,6 @@ scoreboard objectives remove uninstall
 team remove rc.line.state
 team remove rc.line.event
 team remove rc.line.next
+tag @a remove rc.sky
+kill @e[type=minecraft:marker,tag=rc.return]
 tellraw @a [{"text":"[Random Event] ","color":"gold"},{"text":"Scoreboards removed. You can now delete the datapack folder if desired.","color":"yellow"}]
