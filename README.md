@@ -72,9 +72,9 @@ The datapack is built around beating the Ender Dragon.
 
 Tasks are shared by the whole server team. One player clicking a task starts that task for everyone.
 
-- Nether Rush: choose 15, 20, or 30 minutes from `/trigger start` to entering the Nether. Shorter time gives better rewards.
+- Nether Rush: choose 15, 20, or 30 minutes from `/trigger start` to entering the Nether. Rewards are gold blocks, golden apples, fire resistance, and an extra fire resistance potion for the fastest tier.
 - Eye Spy: choose 30, 40, or 60 minutes from `/trigger start` to getting the Eye Spy advancement. Shorter time gives better rewards.
-- Crystal Breaker: choose 2, 4, or 6 minutes. The timer starts when the team enters The End, and completes when no End crystals remain.
+- Crystal Breaker: choose 2, 4, or 6 minutes. The timer starts when the team enters The End, and rewards strength plus health boost when no End crystals remain.
 
 Task rewards help the whole team, such as fire resistance, golden apples, random enchantments, experience, or strength. Failed tasks apply a short team penalty.
 
