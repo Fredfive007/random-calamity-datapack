@@ -111,14 +111,21 @@ RandomEvent/
         internal/
           enable_triggers.mcfunction
           handle_triggers.mcfunction
+          return_from_sky.mcfunction
           set_random_cooldown.mcfunction
           spread_mobs.mcfunction
           trigger_event.mcfunction
           update_sidebar.mcfunction
         events/
           *.mcfunction
+          enchanted_manual/
+            *.mcfunction
           mob_ambush/
             *.mcfunction
+      tags/
+        item/
+          enchanted_manual/
+            *.json
 tools/
   build-release.ps1
 ```
@@ -136,6 +143,8 @@ Important files:
 - `data/random_event/function/internal/update_sidebar.mcfunction`: updates stable sidebar row suffixes while keeping row scores fixed.
 - `data/random_event/function/internal/trigger_event.mcfunction`: rolls `1..29` and dispatches to one event file.
 - `data/random_event/function/events/`: one `.mcfunction` file per random event.
+- `data/random_event/function/events/enchanted_manual/`: helper functions for selecting and enchanting eligible player items.
+- `data/random_event/tags/item/enchanted_manual/`: item tag groups used by the random enchantment helpers.
 - `tools/build-release.ps1`: builds a Minecraft-safe release zip with `/` path separators.
 
 To add or change an event:
@@ -151,7 +160,7 @@ When publishing a release zip, zip the contents of `RandomEvent` so `pack.mcmeta
 
 ```powershell
 cd F:\.github\random-calamity-datapack
-.\tools\build-release.ps1 -Version 1.3.0
+.\tools\build-release.ps1 -Version 1.3.1
 ```
 
 Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects zip entries like `data/minecraft/...`, not Windows-style `data\minecraft\...`.
@@ -186,3 +195,20 @@ Incorrect:
 ```text
 datapacks/random-calamity-datapack/RandomEvent/pack.mcmeta
 ```
+
+## Contributors
+
+Thanks to [Tremia-Termina](https://github.com/Tremia-Termina) for contributing fixes and improvements through pull requests, including the Fire Panic fix and the improved Random Enchantment event system.
+
+## Future Ideas
+
+- Add difficulty stages that increase event intensity the longer the challenge runs.
+- Add mode presets such as `easy`, `chaos`, `reward-heavy`, and `hardcore`.
+- Add configurable event weights so players can tune how often positive and negative events appear.
+- Add a vote system for multiplayer servers, letting players vote to skip, reroll, or intensify the next event.
+- Add milestone rewards for surviving 5, 10, or 20 events.
+- Add a temporary event shield item that blocks the next negative event.
+- Add event combos, where some events modify the next event instead of acting immediately.
+- Add an in-game statistics sidebar or book showing events survived, rewards gained, and most dangerous event.
+- Add structure or arena support, such as optional safe zones where events are paused.
+- Add advancement goals so the datapack feels like a challenge mode, not only a randomizer.
