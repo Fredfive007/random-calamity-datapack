@@ -1,0 +1,21 @@
+scoreboard players set #stage rc.task 1
+scoreboard players set #nether_active rc.task 0
+scoreboard players set #nether_time rc.task 0
+scoreboard players set #nether_limit rc.task 0
+scoreboard players set #nether_tier rc.task 0
+scoreboard players set #nether_done rc.task 0
+scoreboard players set #nether_failed rc.task 0
+scoreboard players set #stronghold_active rc.task 0
+scoreboard players set #stronghold_time rc.task 0
+scoreboard players set #stronghold_limit rc.task 0
+scoreboard players set #stronghold_tier rc.task 0
+scoreboard players set #stronghold_done rc.task 0
+scoreboard players set #stronghold_failed rc.task 0
+scoreboard players set #crystal_active rc.task 0
+scoreboard players set #crystal_started rc.task 0
+scoreboard players set #crystal_time rc.task 0
+scoreboard players set #crystal_limit rc.task 0
+scoreboard players set #crystal_tier rc.task 0
+scoreboard players set #crystal_done rc.task 0
+scoreboard players set #crystal_failed rc.task 0
+

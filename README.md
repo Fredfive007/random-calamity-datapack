@@ -6,8 +6,11 @@ Random Event is a Minecraft Java 1.21.5 datapack for a survival challenge. When 
 
 - Starts and stops a timed random event challenge.
 - Runs one event every 15-60 seconds.
-- Includes twenty-nine events: 18 negative events and 11 positive events.
-- Shows a sidebar with challenge state, current event ID, and seconds until the next event.
+- Switches event pools by progression stage: Overworld, Nether, Stronghold Hunt, and The End.
+- Includes thirty-six events, with several Ender Dragon fight events only appearing in The End.
+- Adds optional shared team tasks with clickable time choices in chat.
+- Automatically stops after the Ender Dragon is defeated.
+- Shows a sidebar with current stage, challenge state, current event, and seconds until the next event.
 - Avoids permanent terrain destruction.
 
 ## Install In Minecraft
@@ -39,7 +42,120 @@ Command meanings:
 - `event`: trigger one event immediately.
 - `uninstall`: remove this datapack's scoreboards.
 
-Use `/trigger ping` first when testing. If it works, the datapack command triggers are ready.
+Use `/trigger ping` first when testing. If it works, the datapack command triggers are ready. `/trigger start` also sends clickable team task choices to all players.
+
+Optional task triggers are normally selected by clicking chat buttons, but they are also plain trigger commands:
+
+```mcfunction
+/trigger task_nether_15
+/trigger task_nether_20
+/trigger task_nether_30
+/trigger task_stronghold_30
+/trigger task_stronghold_40
+/trigger task_stronghold_60
+/trigger task_crystal_2
+/trigger task_crystal_4
+/trigger task_crystal_6
+```
+
+## Progression Stages
+
+The datapack is built around beating the Ender Dragon.
+
+- Stage 1, Overworld: from `/trigger start` until any player enters the Nether.
+- Stage 2, Nether: after any player gets `minecraft:story/enter_the_nether`.
+- Stage 3, Stronghold Hunt: after any player gets Eye Spy, `minecraft:story/follow_ender_eye`.
+- Stage 4, The End: after any player enters The End.
+- Victory: after any player gets `minecraft:end/kill_dragon`; random events stop automatically.
+
+## Team Tasks
+
+Tasks are shared by the whole server team. One player clicking a task starts that task for everyone.
+
+- Nether Rush: choose 15, 20, or 30 minutes from `/trigger start` to entering the Nether. Shorter time gives better rewards.
+- Eye Spy: choose 30, 40, or 60 minutes from `/trigger start` to getting the Eye Spy advancement. Shorter time gives better rewards.
+- Crystal Breaker: choose 2, 4, or 6 minutes. The timer starts when the team enters The End, and completes when no End crystals remain.
+
+Task rewards help the whole team, such as fire resistance, golden apples, random enchantments, experience, or strength. Failed tasks apply a short team penalty.
+
+## Stage Event Pools
+
+Each stage uses equal probability inside its own pool. For example, if a stage has 15 events, each listed event has a `1/15 = 6.67%` chance whenever an event triggers in that stage.
+
+Stage 1, Overworld: 17 events, each `5.88%`
+
+- Blindness Fog
+- Mob Ambush
+- Gravity Slip
+- Weakness Wave
+- Starving Curse
+- Creeper Drop
+- Inventory Weight
+- Frozen Feet
+- Cobweb Snare
+- Rotten Snack
+- Lucky Relief
+- Guardian Blessing
+- Swift Wind
+- Supply Cache
+- Golden Hour
+- Miner's Grace
+- Diamond Spark
+
+Stage 2, Nether: 15 events, each `6.67%`
+
+- Mob Ambush
+- Weakness Wave
+- Starving Curse
+- Dark Pulse
+- Fire Panic
+- Rotten Snack
+- Hostile Bell
+- Arrow Storm
+- Brute Raid
+- Sky Return
+- Lucky Relief
+- Guardian Blessing
+- Golden Hour
+- Random Enchantment
+- Golden Apple Gift
+
+Stage 3, Stronghold Hunt: 16 events, each `6.25%`
+
+- Blindness Fog
+- Mob Ambush
+- Gravity Slip
+- Weakness Wave
+- Dark Pulse
+- Cobweb Snare
+- Arrow Storm
+- Ender Panic
+- Silverfish Crack
+- Sky Return
+- Lucky Relief
+- Swift Wind
+- Second Chance
+- Random Enchantment
+- Golden Apple Gift
+- Ender Pearls
+
+Stage 4, The End: 15 events, each `6.67%`
+
+- Gravity Slip
+- Weakness Wave
+- Dark Pulse
+- Arrow Storm
+- Ender Panic
+- Sky Return
+- Ender Swarm
+- Dragon Breath Bloom
+- Void Pressure
+- Crystal Interference
+- Feather Fall
+- End Resistance
+- Golden Apple Gift
+- Ender Pearls
+- Arrow Refill
 
 ## Event Pool
 
@@ -63,6 +179,10 @@ Negative events:
 - silverfish crack
 - brute raid
 - sky return
+- ender swarm
+- dragon breath bloom
+- void pressure
+- crystal interference
 
 Positive events:
 
@@ -77,6 +197,9 @@ Positive events:
 - golden apple gift
 - diamond spark
 - ender pearls
+- feather fall
+- end resistance
+- arrow refill
 
 Mob Ambush has four variants:
 
@@ -112,10 +235,27 @@ RandomEvent/
           enable_triggers.mcfunction
           handle_triggers.mcfunction
           return_from_sky.mcfunction
+          run_selected_event.mcfunction
           set_random_cooldown.mcfunction
           spread_mobs.mcfunction
           trigger_event.mcfunction
           update_sidebar.mcfunction
+          event_pools/
+            overworld.mcfunction
+            nether.mcfunction
+            stronghold.mcfunction
+            end.mcfunction
+        tasks/
+          reset.mcfunction
+          show_menu.mcfunction
+          tick.mcfunction
+          update_stage.mcfunction
+          select/
+            *.mcfunction
+          complete/
+            *.mcfunction
+          fail/
+            *.mcfunction
         events/
           *.mcfunction
           enchanted_manual/
@@ -141,7 +281,10 @@ Important files:
 - `data/random_event/function/internal/spread_mobs.mcfunction`: spreads ambush mobs around players after summoning.
 - `data/random_event/function/internal/return_from_sky.mcfunction`: returns players from the sky return event after 15 seconds.
 - `data/random_event/function/internal/update_sidebar.mcfunction`: updates stable sidebar row suffixes while keeping row scores fixed.
-- `data/random_event/function/internal/trigger_event.mcfunction`: rolls `1..29` and dispatches to one event file.
+- `data/random_event/function/internal/trigger_event.mcfunction`: refreshes the current stage and dispatches to that stage's event pool.
+- `data/random_event/function/internal/event_pools/`: stage-specific equal-probability event pools.
+- `data/random_event/function/internal/run_selected_event.mcfunction`: maps event IDs to event files.
+- `data/random_event/function/tasks/`: shared team task selection, timers, completion checks, failure checks, and victory stop logic.
 - `data/random_event/function/events/`: one `.mcfunction` file per random event.
 - `data/random_event/function/events/enchanted_manual/`: helper functions for selecting and enchanting eligible player items.
 - `data/random_event/tags/item/enchanted_manual/`: item tag groups used by the random enchantment helpers.
@@ -150,9 +293,11 @@ Important files:
 To add or change an event:
 
 1. Add or edit a file in `data/random_event/function/events/`.
-2. Update `data/random_event/function/internal/trigger_event.mcfunction` so the random range and event mapping include it.
-3. Keep short event feedback in `title` and `subtitle`; the sidebar shows fixed-order `State`, `Event`, and `Next` rows.
-4. Rebuild the release zip with `tools/build-release.ps1`.
+2. Add its event ID to `data/random_event/function/internal/run_selected_event.mcfunction`.
+3. Add the event ID to one or more files in `data/random_event/function/internal/event_pools/`.
+4. Update `data/random_event/function/internal/update_sidebar.mcfunction` so the sidebar shows its name.
+5. Keep short event feedback in `title` and `subtitle`; the sidebar shows fixed-order `Stage`, `State`, `Event`, and `Next` rows.
+6. Rebuild the release zip with `tools/build-release.ps1`.
 
 ## Release Zip
 
@@ -160,7 +305,7 @@ When publishing a release zip, zip the contents of `RandomEvent` so `pack.mcmeta
 
 ```powershell
 cd F:\.github\random-calamity-datapack
-.\tools\build-release.ps1 -Version 1.3.1
+.\tools\build-release.ps1 -Version 1.4.0
 ```
 
 Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects zip entries like `data/minecraft/...`, not Windows-style `data\minecraft\...`.
@@ -202,7 +347,6 @@ Thanks to [Tremia-Termina](https://github.com/Tremia-Termina) for contributing f
 
 ## Future Ideas
 
-- Add difficulty stages that increase event intensity the longer the challenge runs.
 - Add mode presets such as `easy`, `chaos`, `reward-heavy`, and `hardcore`.
 - Add configurable event weights so players can tune how often positive and negative events appear.
 - Add a vote system for multiplayer servers, letting players vote to skip, reroll, or intensify the next event.
@@ -211,4 +355,4 @@ Thanks to [Tremia-Termina](https://github.com/Tremia-Termina) for contributing f
 - Add event combos, where some events modify the next event instead of acting immediately.
 - Add an in-game statistics sidebar or book showing events survived, rewards gained, and most dangerous event.
 - Add structure or arena support, such as optional safe zones where events are paused.
-- Add advancement goals so the datapack feels like a challenge mode, not only a randomizer.
+- Add more advancement-linked goals beyond the three current team tasks.

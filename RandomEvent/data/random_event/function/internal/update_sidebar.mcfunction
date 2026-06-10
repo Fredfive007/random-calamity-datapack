@@ -2,8 +2,14 @@ scoreboard players operation #next rc.value = #cooldown rc.cooldown
 scoreboard players operation #next rc.value -= #timer rc.timer
 scoreboard players operation #next rc.value /= #tick20 rc.value
 execute if score #enabled rc.enabled matches 0 run scoreboard players set #next rc.value 0
+team modify rc.line.stage suffix {"text":" Overworld","color":"green"}
+execute if score #stage rc.task matches 2 run team modify rc.line.stage suffix {"text":" Nether","color":"red"}
+execute if score #stage rc.task matches 3 run team modify rc.line.stage suffix {"text":" Stronghold","color":"gold"}
+execute if score #stage rc.task matches 4 run team modify rc.line.stage suffix {"text":" The End","color":"dark_purple"}
+execute if score #victory rc.task matches 1 run team modify rc.line.stage suffix {"text":" Victory","color":"yellow"}
 team modify rc.line.state suffix {"text":" OFF","color":"red"}
 execute if score #enabled rc.enabled matches 1 run team modify rc.line.state suffix {"text":" ON","color":"green"}
+execute if score #victory rc.task matches 1 run team modify rc.line.state suffix {"text":" VICTORY","color":"yellow"}
 team modify rc.line.event suffix {"text":" None","color":"gray"}
 execute if score #event rc.event matches 1 run team modify rc.line.event suffix {"text":" Blindness Fog","color":"gray"}
 execute if score #event rc.event matches 2 run team modify rc.line.event suffix {"text":" Mob Ambush","color":"red"}
@@ -34,6 +40,13 @@ execute if score #event rc.event matches 26 run team modify rc.line.event suffix
 execute if score #event rc.event matches 27 run team modify rc.line.event suffix {"text":" Brute Raid","color":"dark_red"}
 execute if score #event rc.event matches 28 run team modify rc.line.event suffix {"text":" Sky Return","color":"aqua"}
 execute if score #event rc.event matches 29 run team modify rc.line.event suffix {"text":" Ender Pearls","color":"light_purple"}
+execute if score #event rc.event matches 30 run team modify rc.line.event suffix {"text":" Ender Swarm","color":"dark_purple"}
+execute if score #event rc.event matches 31 run team modify rc.line.event suffix {"text":" Dragon Breath","color":"dark_purple"}
+execute if score #event rc.event matches 32 run team modify rc.line.event suffix {"text":" Void Pressure","color":"dark_gray"}
+execute if score #event rc.event matches 33 run team modify rc.line.event suffix {"text":" Crystal Arrows","color":"gray"}
+execute if score #event rc.event matches 34 run team modify rc.line.event suffix {"text":" Feather Fall","color":"aqua"}
+execute if score #event rc.event matches 35 run team modify rc.line.event suffix {"text":" End Resistance","color":"gold"}
+execute if score #event rc.event matches 36 run team modify rc.line.event suffix {"text":" Arrow Refill","color":"green"}
 execute if score #next rc.value matches 0 run team modify rc.line.next suffix {"text":" 0s","color":"yellow"}
 execute if score #next rc.value matches 1 run team modify rc.line.next suffix {"text":" 1s","color":"yellow"}
 execute if score #next rc.value matches 2 run team modify rc.line.next suffix {"text":" 2s","color":"yellow"}

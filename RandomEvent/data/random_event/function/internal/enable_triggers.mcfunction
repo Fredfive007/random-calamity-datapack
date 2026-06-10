@@ -3,3 +3,12 @@ scoreboard players enable @a start
 scoreboard players enable @a stop
 scoreboard players enable @a event
 scoreboard players enable @a uninstall
+scoreboard players enable @a task_nether_15
+scoreboard players enable @a task_nether_20
+scoreboard players enable @a task_nether_30
+scoreboard players enable @a task_stronghold_30
+scoreboard players enable @a task_stronghold_40
+scoreboard players enable @a task_stronghold_60
+scoreboard players enable @a task_crystal_2
+scoreboard players enable @a task_crystal_4
+scoreboard players enable @a task_crystal_6
