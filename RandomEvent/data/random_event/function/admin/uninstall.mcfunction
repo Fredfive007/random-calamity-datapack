@@ -11,6 +11,7 @@ scoreboard objectives remove start
 scoreboard objectives remove stop
 scoreboard objectives remove event
 scoreboard objectives remove uninstall
+scoreboard objectives remove task
 scoreboard objectives remove task_nether_15
 scoreboard objectives remove task_nether_20
 scoreboard objectives remove task_nether_30

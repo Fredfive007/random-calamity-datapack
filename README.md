@@ -47,16 +47,22 @@ Use `/trigger ping` first when testing. If it works, the datapack command trigge
 Optional task triggers are normally selected by clicking chat buttons, but they are also plain trigger commands:
 
 ```mcfunction
-/trigger task_nether_15
-/trigger task_nether_20
-/trigger task_nether_30
-/trigger task_stronghold_30
-/trigger task_stronghold_40
-/trigger task_stronghold_60
-/trigger task_crystal_2
-/trigger task_crystal_4
-/trigger task_crystal_6
+/trigger task set 1
+/trigger task set 2
+/trigger task set 3
+/trigger task set 4
+/trigger task set 5
+/trigger task set 6
+/trigger task set 7
+/trigger task set 8
+/trigger task set 9
 ```
+
+Task numbers match the chat menu from top to bottom:
+
+- 1-3: Nether Rush 15, 20, 30 minutes.
+- 4-6: Eye Spy 30, 40, 60 minutes.
+- 7-9: Crystal Breaker 2, 4, 6 minutes.
 
 ## Progression Stages
 

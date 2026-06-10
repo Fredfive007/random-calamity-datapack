@@ -1,5 +1,4 @@
-title @a title {"text":"Silverfish Crack","color":"gray","bold":true}
-title @a subtitle {"text":"The ground starts crawling.","color":"dark_gray"}
+title @a actionbar [{"text":"Silverfish Crack: ","color":"gray","bold":true},{"text":"The ground starts crawling.","color":"dark_gray"}]
 execute at @a run summon minecraft:silverfish ~ ~ ~ {Tags:["rc.mob"],PersistenceRequired:0b}
 execute at @a run summon minecraft:silverfish ~ ~ ~ {Tags:["rc.mob"],PersistenceRequired:0b}
 execute at @a run summon minecraft:silverfish ~ ~ ~ {Tags:["rc.mob"],PersistenceRequired:0b}

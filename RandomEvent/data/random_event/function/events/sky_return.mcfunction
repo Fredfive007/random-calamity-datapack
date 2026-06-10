@@ -1,5 +1,4 @@
-title @a title {"text":"Sky Return","color":"aqua","bold":true}
-title @a subtitle {"text":"You will return in 15 seconds.","color":"white"}
+title @a actionbar [{"text":"Sky Return: ","color":"aqua","bold":true},{"text":"You will return in 15 seconds.","color":"white"}]
 kill @e[type=minecraft:marker,tag=rc.return]
 tag @a remove rc.sky
 execute as @a at @s run summon minecraft:marker ~ ~ ~ {Tags:["rc.return"]}

@@ -11,15 +11,16 @@ scoreboard objectives add start trigger
 scoreboard objectives add stop trigger
 scoreboard objectives add event trigger
 scoreboard objectives add uninstall trigger
-scoreboard objectives add task_nether_15 trigger
-scoreboard objectives add task_nether_20 trigger
-scoreboard objectives add task_nether_30 trigger
-scoreboard objectives add task_stronghold_30 trigger
-scoreboard objectives add task_stronghold_40 trigger
-scoreboard objectives add task_stronghold_60 trigger
-scoreboard objectives add task_crystal_2 trigger
-scoreboard objectives add task_crystal_4 trigger
-scoreboard objectives add task_crystal_6 trigger
+scoreboard objectives remove task_nether_15
+scoreboard objectives remove task_nether_20
+scoreboard objectives remove task_nether_30
+scoreboard objectives remove task_stronghold_30
+scoreboard objectives remove task_stronghold_40
+scoreboard objectives remove task_stronghold_60
+scoreboard objectives remove task_crystal_2
+scoreboard objectives remove task_crystal_4
+scoreboard objectives remove task_crystal_6
+scoreboard objectives add task trigger
 scoreboard players set #timer rc.timer 0
 scoreboard players set #enabled rc.enabled 0
 scoreboard players set #event rc.event 0
