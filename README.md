@@ -299,17 +299,6 @@ To add or change an event:
 5. Keep short event feedback in `title` and `subtitle`; the sidebar shows fixed-order `Stage`, `State`, `Event`, and `Next` rows.
 6. Rebuild the release zip with `tools/build-release.ps1`.
 
-## Release Zip
-
-When publishing a release zip, zip the contents of `RandomEvent` so `pack.mcmeta` is at the zip root. Do not zip the outer repository folder.
-
-```powershell
-cd F:\.github\random-calamity-datapack
-.\tools\build-release.ps1 -Version 1.4.0
-```
-
-Use `tools/build-release.ps1` instead of `Compress-Archive`; Minecraft expects zip entries like `data/minecraft/...`, not Windows-style `data\minecraft\...`.
-
 ## Troubleshooting Unknown Command
 
 If Minecraft says `Unknown command`, first run:
