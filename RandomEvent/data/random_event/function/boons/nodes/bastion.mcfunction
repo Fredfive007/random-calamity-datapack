@@ -1,6 +1,6 @@
 scoreboard players set #pending rc.boon 6
 scoreboard players set #bastion_done rc.boon 1
-tellraw @a [{"text":"\n[Milestone Boon] ","color":"aqua","bold":true},{"text":"War Pigs","color":"white"}]
+tellraw @a [{"text":"\n[Milestone Boon] ","color":"aqua","bold":true},{"text":"Those Were the Days","color":"white"}]
 tellraw @a [{"text":"[1] Ancient Plate - +4 armor","color":"blue","bold":true,"underlined":true,"clickEvent":{"action":"run_command","value":"/trigger boon set 1"},"click_event":{"action":"run_command","command":"/trigger boon set 1"},"hoverEvent":{"action":"show_text","contents":{"text":"Click to choose this team reward."}},"insertion":"/trigger boon set 1"}]
 tellraw @a [{"text":"[2] Bastion Momentum - +10% movement speed + 0.1 knockback resistance","color":"aqua","bold":true,"underlined":true,"clickEvent":{"action":"run_command","value":"/trigger boon set 2"},"click_event":{"action":"run_command","command":"/trigger boon set 2"},"hoverEvent":{"action":"show_text","contents":{"text":"Click to choose this team reward."}},"insertion":"/trigger boon set 2"}]
 tellraw @a [{"text":"[3] Bastion Cache - 6 gold blocks + 2 golden apples + 12 levels","color":"gold","bold":true,"underlined":true,"clickEvent":{"action":"run_command","value":"/trigger boon set 3"},"click_event":{"action":"run_command","command":"/trigger boon set 3"},"hoverEvent":{"action":"show_text","contents":{"text":"Click to choose this team reward."}},"insertion":"/trigger boon set 3"}]
